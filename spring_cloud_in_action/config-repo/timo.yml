@@ -1,2 +1,24 @@
-timo:
-  name: I love you
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://peer1:8762/eureka/,http://peer2:8763/eureka/
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 2500
+ribbon:
+  ConnectTimeout: 5000
+  ReadTimeout: 5000
+zuul:
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+  ignoredServices: '*'
+  routes:
+    ribbon-service:
+      path: /ribbon/**
+      sensitiveHeaders: true
+      serviceId: service-user-ribbon
