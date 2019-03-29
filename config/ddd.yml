@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/blankhang/config-repo #git仓库的地址；file://${user.name}/config-repo这是本地文件路径配置的方式，只限于用于开发使用
+          searchPaths: spring_cloud_in_action/config-repo
+          username: blankhang  #这里对应仓库地址的账号密码
+          password: 9DzjC7MUKc3RJK5
+          discovery:
+            enabled: true
+
+
+server:
+  port: 8888
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
